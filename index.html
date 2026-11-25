@@ -174,51 +174,113 @@ button:disabled{opacity:.65;cursor:wait}.message{display:none;margin-top:16px;pa
 <footer class="footer"><strong>LESCO IT Directorate</strong><br>ESS – Employee Self Service Attendance Feedback</footer>
 </div>
 <script>
+const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const ESS_POST_FRAME_NAME = 'essFeedbackPostFrame';
+let essSubmissionPending = false;
+let essSubmissionTimeout = null;
+const essPostFrame = document.createElement('iframe');
+essPostFrame.name = ESS_POST_FRAME_NAME;
+essPostFrame.id = ESS_POST_FRAME_NAME;
+essPostFrame.style.display = 'none';
+document.body.appendChild(essPostFrame);
+
 function val(id){return document.getElementById(id)?.value || '';}
 function checked(name){return document.querySelector('input[name="'+name+'"]:checked')?.value || '';}
 function checks(name){return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(x=>x.value);}
 function sendField(form,name,value){const i=document.createElement('input');i.type='hidden';i.name=name;i.value=Array.isArray(value)?value.join('|||'):(value??'');form.appendChild(i);}
 
-document.getElementById('feedbackForm').addEventListener('submit',function(ev){
- ev.preventDefault();
- if(!this.reportValidity()) return;
- const btn=document.getElementById('submitButton');
- btn.disabled=true;btn.textContent='Feedback جمع ہو رہا ہے...';
- const msg=document.getElementById('message');
- msg.className='message success';msg.textContent='براہِ کرم انتظار کریں...';
+window.addEventListener('message', function(event) {
+  if (!essSubmissionPending) return;
 
- const data={
- subDivision:val('subDivision'),division:val('division'),name:val('name'),designation:val('designation'),employeeId:val('employeeId'),mobile:val('mobile'),usagePeriod:val('usagePeriod'),workNature:val('workNature'),
- oldMethod:checked('oldMethod'),oldDifficulty:checked('oldDifficulty'),oldRecordAccess:checked('oldRecordAccess'),oldIssues:checks('oldIssues'),
- appEase:checked('appEase'),recordAccess:checked('recordAccess'),accuracy:checked('accuracy'),problemFrequency:checked('problemFrequency'),correction:checked('correction'),connectivity:checked('connectivity'),
- comparison:checked('comparison'),timeImpact:checked('timeImpact'),transparency:checked('transparency'),overallImpact:checked('overallImpact'),fieldFit:checked('fieldFit'),satisfaction:checked('satisfaction'),
- essIssues:checks('essIssues'),benefit:val('benefit'),improvement:val('improvement'),comments:val('comments')
- };
+  let result = event.data;
+  if (typeof result === 'string') {
+    try { result = JSON.parse(result); } catch (err) { return; }
+  }
+  if (!result || result.type !== 'ESS_FEEDBACK_RESULT') return;
 
- if(typeof google==='undefined' || !google.script || !google.script.run){
-   show(false,'یہ صفحہ Google Apps Script کے Live URL سے کھولیں؛ مقامی HTML فائل سے Submission دستیاب نہیں۔');
-   return;
- }
- const timeout=setTimeout(()=>{
-   show(false,'سرور سے جواب موصول نہیں ہوا۔ دوبارہ جمع کرانے سے پہلے Google Sheet چیک کریں تاکہ ڈپلیکیٹ اندراج نہ ہو۔');
- },45000);
+  essSubmissionPending = false;
+  if (essSubmissionTimeout) clearTimeout(essSubmissionTimeout);
 
- google.script.run
-   .withSuccessHandler(function(result){
-     clearTimeout(timeout);
-     if(result && result.success){
-       show(true,'آپ کا Feedback کامیابی سے Google Form اور Google Sheet میں محفوظ ہو گیا ہے۔ شکریہ۔');
-       document.getElementById('feedbackForm').reset();
-       document.getElementById('division').value='';
-     } else {
-       show(false,'Feedback محفوظ نہیں ہو سکا: '+(result && result.message ? result.message : 'نامعلوم خرابی'));
-     }
-   })
-   .withFailureHandler(function(error){
-     clearTimeout(timeout);
-     show(false,'سرور کی خرابی: '+(error && error.message ? error.message : String(error)));
-   })
-   .submitESSFeedback(data);
+  if (result.success) {
+    show(true, 'آپ کا Feedback کامیابی سے Google Form اور Google Sheet میں محفوظ ہو گیا ہے۔ شکریہ۔');
+    document.getElementById('feedbackForm').reset();
+  } else {
+    show(false, 'Feedback محفوظ نہیں ہو سکا: ' + (result.message || 'نامعلوم خرابی'));
+  }
+});
+
+document.getElementById('feedbackForm').addEventListener('submit', function(ev) {
+  ev.preventDefault();
+  if (!this.reportValidity()) return;
+
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('PASTE_YOUR_') === 0) {
+    show(false, 'پہلے index.html میں Google Apps Script کا Web App URL درج کریں۔');
+    return;
+  }
+
+  const btn = document.getElementById('submitButton');
+  btn.disabled = true;
+  btn.textContent = 'Feedback جمع ہو رہا ہے...';
+
+  const msg = document.getElementById('message');
+  msg.className = 'message success';
+  msg.textContent = 'براہِ کرم انتظار کریں...';
+
+  const data = {
+    subDivision: val('subDivision'),
+    division: val('division'),
+    name: val('name'),
+    designation: val('designation'),
+    employeeId: val('employeeId'),
+    mobile: val('mobile'),
+    usagePeriod: val('usagePeriod'),
+    workNature: val('workNature'),
+    oldMethod: checked('oldMethod'),
+    oldDifficulty: checked('oldDifficulty'),
+    oldRecordAccess: checked('oldRecordAccess'),
+    oldIssues: checks('oldIssues'),
+    appEase: checked('appEase'),
+    recordAccess: checked('recordAccess'),
+    accuracy: checked('accuracy'),
+    problemFrequency: checked('problemFrequency'),
+    correction: checked('correction'),
+    connectivity: checked('connectivity'),
+    comparison: checked('comparison'),
+    timeImpact: checked('timeImpact'),
+    transparency: checked('transparency'),
+    overallImpact: checked('overallImpact'),
+    fieldFit: checked('fieldFit'),
+    satisfaction: checked('satisfaction'),
+    essIssues: checks('essIssues'),
+    benefit: val('benefit'),
+    improvement: val('improvement'),
+    comments: val('comments')
+  };
+
+  const postForm = document.createElement('form');
+  postForm.method = 'POST';
+  postForm.action = APPS_SCRIPT_URL;
+  postForm.target = ESS_POST_FRAME_NAME;
+  postForm.style.display = 'none';
+
+  Object.keys(data).forEach(function(key) {
+    const hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = key;
+    hidden.value = Array.isArray(data[key]) ? data[key].join('|||') : (data[key] || '');
+    postForm.appendChild(hidden);
+  });
+
+  document.body.appendChild(postForm);
+  essSubmissionPending = true;
+
+  essSubmissionTimeout = setTimeout(function() {
+    essSubmissionPending = false;
+    show(false, 'سرور سے جواب موصول نہیں ہوا۔ دوبارہ جمع کرانے سے پہلے Google Sheet چیک کریں تاکہ ڈپلیکیٹ اندراج نہ ہو۔');
+  }, 45000);
+
+  postForm.submit();
+  setTimeout(function() { postForm.remove(); }, 1000);
 });
 function show(ok,t){const b=document.getElementById('submitButton');b.disabled=false;b.textContent='Feedback جمع کریں';const m=document.getElementById('message');m.className='message '+(ok?'success':'error');m.textContent=t;m.scrollIntoView({behavior:'smooth',block:'center'});}
 </script>
