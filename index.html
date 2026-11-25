@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LESCO IT Directorate – ESS Feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:linear-gradient(135deg,#edf7ff,#f8fbff,#edf5fb);color:#172033;font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;direction:rtl}
+.page{max-width:1100px;margin:25px auto;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 20px 55px rgba(20,65,100,.15)}
+.header{background:linear-gradient(135deg,#087ac7,#075da3);color:#fff;padding:22px 28px;display:flex;align-items:center;gap:18px}
+.logo{width:76px;height:76px;border-radius:50%;background:#fff;color:#0875c1;display:flex;align-items:center;justify-content:center;font:bold 25px Arial;flex-shrink:0}
+.header-text{flex:1}.header-title{font-family:Arial,sans-serif;font-size:28px;font-weight:700;direction:ltr;text-align:right}.header-subtitle{font-size:18px}
+.badge{display:inline-block;margin-top:7px;padding:4px 13px;border-radius:20px;background:rgba(255,255,255,.16);font-family:Arial,sans-serif;font-size:13px;direction:ltr}
+.content{padding:30px}.intro{margin-bottom:24px}.intro h1{font-size:27px;color:#10243d;margin:0 0 10px}.intro p{color:#566a80;font-size:16px;line-height:2;margin:4px 0}
+.section{background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #d9e7f3;border-radius:18px;padding:24px;margin-bottom:22px;box-shadow:0 5px 18px rgba(0,60,110,.04)}
+.section-title{display:flex;align-items:center;gap:11px;color:#086ab2;font-size:21px;font-weight:700;margin-bottom:21px}
+.number{width:36px;height:36px;background:#0875c1;color:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;font:14px Arial;flex-shrink:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}.field{display:flex;flex-direction:column;gap:7px}.full{grid-column:1/-1}
+label{color:#263d56;font-size:15px;font-weight:600}.required{color:#d32f2f}
+input,select,textarea{width:100%;border:1px solid #c9dbea;border-radius:10px;background:#fff;color:#172033;padding:11px 14px;font-family:"Noto Nastaliq Urdu",Arial,sans-serif;font-size:15px;outline:none}
+input,select{min-height:48px}textarea{min-height:105px;resize:vertical;line-height:2}
+input:focus,select:focus,textarea:focus{border-color:#0875c1;box-shadow:0 0 0 3px rgba(8,117,193,.10)}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:3px}
+.option{display:flex;flex-direction:row;align-items:center;gap:8px;background:#f7fbff;border:1px solid #d9e7f3;border-radius:9px;padding:9px 12px;cursor:pointer}
+.option input{width:auto;min-height:auto;accent-color:#0875c1}
+.rating{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.rating .option{justify-content:center;text-align:center;flex-direction:column;gap:2px;min-height:70px}
+.rating .option input{margin:0}.rating-num{font-family:Arial,sans-serif;font-weight:bold;color:#086ab2}
+.submit-area{text-align:center;padding:8px 0 4px}button{border:0;border-radius:12px;background:linear-gradient(135deg,#087ac7,#075fa5);color:#fff;padding:13px 44px;font-family:"Noto Nastaliq Urdu",serif;font-size:17px;font-weight:700;cursor:pointer}
+button:disabled{opacity:.65;cursor:wait}.message{display:none;margin-top:16px;padding:13px;border-radius:10px;text-align:center;line-height:2}
+.success{display:block;background:#ecfff7;border:1px solid #9be7c7;color:#087a50}.error{display:block;background:#fff1f1;border:1px solid #efb0b0;color:#a62020}
+.footer{padding:20px;text-align:center;border-top:1px solid #e1eaf2;background:#fafcff;font-family:Arial,sans-serif;direction:ltr;color:#62758b;font-size:13px;line-height:1.8}
+@media(max-width:800px){.page{margin:0;border-radius:0}.header{padding:17px}.logo{width:60px;height:60px}.header-title{font-size:21px}.content{padding:17px}.grid{grid-template-columns:1fr}.full{grid-column:auto}.options{grid-template-columns:1fr}.section{padding:18px}}
+@media(max-width:480px){.header-title{font-size:18px}.intro h1{font-size:23px}button{width:100%}.rating .option{padding:7px 2px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="header"><div class="logo">ESS</div><div class="header-text">
+<div class="header-title">LESCO IT Directorate</div><div class="header-subtitle">ESS Attendance System – ملازمین کی رائے</div>
+<div class="badge">ESS FEEDBACK FORM</div></div></header>
+<main class="content">
+<div class="intro"><h1>ESS Attendance System کا Feedback</h1>
+<p>براہِ کرم ESS Application کے استعمال سے پہلے اور بعد کے Attendance نظام کے بارے میں اپنی حقیقی رائے دیں۔ اس فارم کا مقصد مثبت اور منفی دونوں آراء، درپیش مسائل اور بہتری کی تجاویز حاصل کرنا ہے۔ کوئی جواب درست یا غلط نہیں؛ براہِ کرم اپنی اصل صورتِ حال کے مطابق جواب دیں۔</p>
+<p>آپ کی رائے کو نظام کی بہتری اور آئندہ فیصلوں کے لیے استعمال کیا جائے گا۔</p></div>
+<form id="feedbackForm">
+<section class="section"><div class="section-title"><span class="number">01</span><span>ملازم کی معلومات</span></div><div class="grid">
+<div class="field"><label>Sub-Division <span class="required">*</span></label><select id="subDivision" required><option value="">Sub-Division منتخب کریں</option>
+<option value="11110">11110</option>
+<option value="11111">11111</option>
+<option value="11112">11112</option>
+<option value="11113">11113</option>
+<option value="11114">11114</option>
+<option value="11115">11115</option>
+<option value="11116">11116</option>
+<option value="11123">11123</option>
+<option value="11124">11124</option>
+<option value="11128">11128</option>
+<option value="11129">11129</option>
+<option value="11130">11130</option>
+<option value="11131">11131</option>
+<option value="11132">11132</option>
+<option value="11133">11133</option>
+<option value="11134">11134</option>
+<option value="11135">11135</option>
+<option value="11140">11140</option>
+<option value="11141">11141</option>
+<option value="11142">11142</option>
+<option value="11143">11143</option>
+<option value="11144">11144</option>
+<option value="11145">11145</option>
+<option value="11150">11150</option>
+<option value="11151">11151</option>
+<option value="11152">11152</option>
+<option value="11153">11153</option>
+<option value="11154">11154</option>
+<option value="11155">11155</option>
+<option value="11160">11160</option>
+<option value="11161">11161</option>
+<option value="11162">11162</option>
+<option value="11163">11163</option>
+<option value="11164">11164</option>
+<option value="11165">11165</option>
+<option value="11166">11166</option>
+<option value="11218">11218</option>
+<option value="11219">11219</option>
+<option value="11220">11220</option>
+<option value="11221">11221</option>
+<option value="11222">11222</option>
+<option value="11223">11223</option>
+<option value="11224">11224</option>
+<option value="11225">11225</option>
+<option value="11230">11230</option>
+<option value="11231">11231</option>
+<option value="11237">11237</option>
+<option value="11238">11238</option>
+<option value="11240">11240</option>
+<option value="11241">11241</option>
+<option value="11242">11242</option>
+<option value="11243">11243</option>
+<option value="11244">11244</option>
+<option value="11245">11245</option>
+<option value="11250">11250</option>
+<option value="11251">11251</option>
+<option value="11252">11252</option>
+<option value="11253">11253</option>
+<option value="11254">11254</option>
+<option value="11263">11263</option>
+<option value="11264">11264</option>
+<option value="11270">11270</option>
+<option value="11271">11271</option>
+<option value="11273">11273</option>
+<option value="11274">11274</option>
+<option value="11310">11310</option>
+<option value="11311">11311</option>
+<option value="11312">11312</option>
+<option value="11313">11313</option>
+<option value="11314">11314</option>
+<option value="11315">11315</option>
+<option value="11316">11316</option>
+<option value="11330">11330</option>
+<option value="11331">11331</option>
+<option value="11332">11332</option>
+<option value="11333">11333</option>
+<option value="11334">11334</option>
+<option value="11335">11335</option>
+<option value="11340">11340</option>
+<option value="11341">11341</option>
+<option value="11342">11342</option>
+<option value="11343">11343</option>
+<option value="11344">11344</option>
+<option value="11345">11345</option>
+<option value="11346">11346</option>
+<option value="11347">11347</option>
+<option value="11350">11350</option>
+<option value="11351">11351</option>
+<option value="11352">11352</option>
+<option value="11353">11353</option>
+<option value="11354">11354</option>
+<option value="11411">11411</option>
+<option value="11412">11412</option>
+<option value="11413">11413</option>
+<option value="11414">11414</option>
+<option value="11416">11416</option>
+<option value="11417">11417</option>
+<option value="11418">11418</option>
+<option value="11420">11420</option>
+<option value="11421">11421</option>
+<option value="11422">11422</option>
+<option value="11423">11423</option>
+<option value="11424">11424</option>
+<option value="11430">11430</option>
+<option value="11431">11431</option>
+<option value="11432">11432</option>
+<option value="11433">11433</option>
+<option value="11434">11434</option>
+<option value="11450">11450</option>
+<option value="11451">11451</option>
+<option value="11452">11452</option>
+<option value="11453">11453</option>
+<option value="11454">11454</option>
+<option value="11455">11455</option>
+<option value="11456">11456</option>
+<option value="11461">11461</option>
+<option value="11462">11462</option>
+<option value="11463">11463</option>
+<option value="11464">11464</option>
+<option value="11465">11465</option>
+<option value="11466">11466</option>
+<option value="11510">11510</option>
+<option value="11511">11511</option>
+<option value="11512">11512</option>
+<option value="11513">11513</option>
+<option value="11514">11514</option>
+<option value="11515">11515</option>
+<option value="11516">11516</option>
+<option value="11520">11520</option>
+<option value="11521">11521</option>
+<option value="11522">11522</option>
+<option value="11523">11523</option>
+<option value="11526">11526</option>
+<option value="11527">11527</option>
+<option value="11530">11530</option>
+<option value="11531">11531</option>
+<option value="11532">11532</option>
+<option value="11533">11533</option>
+<option value="11534">11534</option>
+<option value="11535">11535</option>
+<option value="11536">11536</option>
+<option value="11537">11537</option>
+<option value="11540">11540</option>
+<option value="11541">11541</option>
+<option value="11542">11542</option>
+<option value="11543">11543</option>
+<option value="11544">11544</option>
+<option value="11545">11545</option>
+<option value="11550">11550</option>
+<option value="11551">11551</option>
+<option value="11552">11552</option>
+<option value="11553">11553</option>
+<option value="11554">11554</option>
+<option value="11560">11560</option>
+<option value="11561">11561</option>
+<option value="11562">11562</option>
+<option value="11563">11563</option>
+<option value="11564">11564</option>
+<option value="11570">11570</option>
+<option value="11571">11571</option>
+<option value="11573">11573</option>
+<option value="11574">11574</option>
+<option value="11575">11575</option>
+<option value="11576">11576</option>
+<option value="11610">11610</option>
+<option value="11611">11611</option>
+<option value="11612">11612</option>
+<option value="11613">11613</option>
+<option value="11614">11614</option>
+<option value="11630">11630</option>
+<option value="11631">11631</option>
+<option value="11632">11632</option>
+<option value="11633">11633</option>
+<option value="11634">11634</option>
+<option value="11635">11635</option>
+<option value="11640">11640</option>
+<option value="11641">11641</option>
+<option value="11642">11642</option>
+<option value="11643">11643</option>
+<option value="11644">11644</option>
+<option value="11645">11645</option>
+<option value="11710">11710</option>
+<option value="11711">11711</option>
+<option value="11712">11712</option>
+<option value="11713">11713</option>
+<option value="11714">11714</option>
+<option value="11722">11722</option>
+<option value="11723">11723</option>
+<option value="11724">11724</option>
+<option value="11725">11725</option>
+<option value="11726">11726</option>
+<option value="11727">11727</option>
+<option value="11730">11730</option>
+<option value="11731">11731</option>
+<option value="11732">11732</option>
+<option value="11733">11733</option>
+<option value="11734">11734</option>
+<option value="11738">11738</option>
+<option value="11739">11739</option>
+<option value="11740">11740</option>
+<option value="11741">11741</option>
+<option value="11742">11742</option>
+<option value="11743">11743</option>
+<option value="11744">11744</option>
+<option value="11745">11745</option>
+<option value="11746">11746</option>
+<option value="11747">11747</option>
+<option value="11750">11750</option>
+<option value="11751">11751</option>
+<option value="11752">11752</option>
+<option value="11753">11753</option>
+<option value="11754">11754</option>
+<option value="11810">11810</option>
+<option value="11811">11811</option>
+<option value="11812">11812</option>
+<option value="11813">11813</option>
+<option value="11814">11814</option>
+<option value="11820">11820</option>
+<option value="11821">11821</option>
+<option value="11822">11822</option>
+<option value="11823">11823</option>
+<option value="11824">11824</option>
+<option value="11830">11830</option>
+<option value="11831">11831</option>
+<option value="11832">11832</option>
+<option value="11833">11833</option>
+<option value="11834">11834</option>
+<option value="11840">11840</option>
+<option value="11841">11841</option>
+<option value="11842">11842</option>
+<option value="11843">11843</option>
+<option value="11844">11844</option>
+</select></div>
+<div class="field"><label>Division</label><input id="division" readonly placeholder="Sub-Division منتخب ہونے پر ظاہر ہوگی"></div>
+<div class="field"><label>نام <span class="required">*</span></label><input id="name" required></div>
+<div class="field"><label>عہدہ <span class="required">*</span></label><input id="designation" type="text" required placeholder="اپنا عہدہ خود درج کریں"></div>
+<div class="field"><label>ERP Number (اگر دستیاب ہو)</label><input id="employeeId" type="text" placeholder="اپنا ERP نمبر درج کریں"></div>
+<div class="field"><label>موبائل نمبر</label><input id="mobile" type="tel" placeholder="03XX-XXXXXXX"></div>
+<div class="field"><label>آپ ESS کتنے عرصے سے استعمال کر رہے ہیں؟ <span class="required">*</span></label><select id="usagePeriod" required><option value="">مدت منتخب کریں</option><option>ایک ماہ سے کم</option><option>1 تا 3 ماہ</option><option>3 تا 6 ماہ</option><option>6 ماہ سے ایک سال</option><option>ایک سال سے زیادہ</option></select></div>
+<div class="field"><label>آپ کا کام زیادہ تر کہاں ہوتا ہے؟</label><select id="workNature"><option value="">منتخب کریں</option><option>فیلڈ میں</option><option>دفتر میں</option><option>فیلڈ اور دفتر دونوں</option></select></div>
+</div></section>
+
+<section class="section"><div class="section-title"><span class="number">02</span><span>ESS سے پہلے Attendance کا طریقۂ کار</span></div><div class="grid">
+<div class="field full"><label>1۔ ESS سے پہلے آپ کی روزانہ Attendance کس طریقے سے درج ہوتی تھی؟ <span class="required">*</span></label><div class="options">
+<label class="option"><input type="radio" name="oldMethod" value="Manual Attendance Register" required><span>Manual Attendance Register</span></label>
+<label class="option"><input type="radio" name="oldMethod" value="Attendance Sheet"><span>Attendance Sheet</span></label>
+<label class="option"><input type="radio" name="oldMethod" value="دفتر میں حاضری درج کروانا"><span>دفتر میں حاضری درج کروانا</span></label>
+<label class="option"><input type="radio" name="oldMethod" value="کوئی دوسرا طریقہ"><span>کوئی دوسرا طریقہ</span></label>
+</div></div>
+<div class="field full"><label>2۔ پرانے نظام میں اپنی حاضری درج کروانے یا درست کروانے میں کتنی دشواری ہوتی تھی؟ <span class="required">*</span></label><div class="rating">
+<label class="option"><input type="radio" name="oldDifficulty" value="بہت زیادہ" required><span>بہت زیادہ</span></label>
+<label class="option"><input type="radio" name="oldDifficulty" value="زیادہ" required><span>زیادہ</span></label>
+<label class="option"><input type="radio" name="oldDifficulty" value="درمیانی" required><span>درمیانی</span></label>
+<label class="option"><input type="radio" name="oldDifficulty" value="کم" required><span>کم</span></label>
+<label class="option"><input type="radio" name="oldDifficulty" value="بالکل دشواری نہیں" required><span>بالکل دشواری نہیں</span></label>
+</div></div>
+<div class="field full"><label>3۔ پرانے نظام میں اپنی Attendance History یا سابقہ ریکارڈ حاصل کرنا کتنا آسان تھا؟ <span class="required">*</span></label><div class="options">
+<label class="option"><input type="radio" name="oldRecordAccess" value="بہت آسان" required><span>بہت آسان</span></label>
+<label class="option"><input type="radio" name="oldRecordAccess" value="آسان" required><span>آسان</span></label>
+<label class="option"><input type="radio" name="oldRecordAccess" value="مشکل" required><span>مشکل</span></label>
+<label class="option"><input type="radio" name="oldRecordAccess" value="بہت مشکل" required><span>بہت مشکل</span></label>
+<label class="option"><input type="radio" name="oldRecordAccess" value="یاد نہیں" required><span>یاد نہیں</span></label>
+</div></div>
+<div class="field full"><label>4۔ پرانے نظام میں آپ کو کن مسائل کا سامنا ہوتا تھا؟ (ایک سے زیادہ منتخب کر سکتے ہیں)</label><div class="options">
+<label class="option"><input type="checkbox" name="oldIssues" value="اندراج میں تاخیر"><span>اندراج میں تاخیر</span></label>
+<label class="option"><input type="checkbox" name="oldIssues" value="ریکارڈ میں غلطی"><span>ریکارڈ میں غلطی</span></label>
+<label class="option"><input type="checkbox" name="oldIssues" value="درستگی میں دشواری"><span>درستگی میں دشواری</span></label>
+<label class="option"><input type="checkbox" name="oldIssues" value="سابقہ ریکارڈ تک رسائی"><span>سابقہ ریکارڈ تک رسائی</span></label>
+<label class="option"><input type="checkbox" name="oldIssues" value="اضافی دفتری چکر"><span>اضافی دفتری چکر</span></label>
+<label class="option"><input type="checkbox" name="oldIssues" value="کوئی خاص مسئلہ نہیں"><span>کوئی خاص مسئلہ نہیں</span></label>
+</div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><span class="number">03</span><span>موجودہ ESS کا استعمال اور کارکردگی</span></div><div class="grid">
+<div class="field full"><label>5۔ ESS Application استعمال کرنا آپ کے لیے کتنا آسان ہے؟ <span class="required">*</span></label><div class="rating"><label class="option"><input type="radio" name="appEase" value="بہت مشکل" required><span>بہت مشکل</span></label>
+<label class="option"><input type="radio" name="appEase" value="مشکل" required><span>مشکل</span></label>
+<label class="option"><input type="radio" name="appEase" value="درمیانہ" required><span>درمیانہ</span></label>
+<label class="option"><input type="radio" name="appEase" value="آسان" required><span>آسان</span></label>
+<label class="option"><input type="radio" name="appEase" value="بہت آسان" required><span>بہت آسان</span></label></div></div>
+<div class="field full"><label>6۔ ESS میں اپنی Attendance اور حاضری کا ریکارڈ دیکھنا کتنا آسان ہے؟ <span class="required">*</span></label><div class="rating"><label class="option"><input type="radio" name="recordAccess" value="بہت مشکل" required><span>بہت مشکل</span></label>
+<label class="option"><input type="radio" name="recordAccess" value="مشکل" required><span>مشکل</span></label>
+<label class="option"><input type="radio" name="recordAccess" value="درمیانہ" required><span>درمیانہ</span></label>
+<label class="option"><input type="radio" name="recordAccess" value="آسان" required><span>آسان</span></label>
+<label class="option"><input type="radio" name="recordAccess" value="بہت آسان" required><span>بہت آسان</span></label></div></div>
+<div class="field full"><label>7۔ ESS کے ذریعے درج ہونے والی Attendance کتنی درست اور قابلِ اعتماد ہے؟ <span class="required">*</span></label><div class="rating"><label class="option"><input type="radio" name="accuracy" value="بالکل قابلِ اعتماد نہیں" required><span>بالکل قابلِ اعتماد نہیں</span></label>
+<label class="option"><input type="radio" name="accuracy" value="کم قابلِ اعتماد" required><span>کم قابلِ اعتماد</span></label>
+<label class="option"><input type="radio" name="accuracy" value="درمیانہ" required><span>درمیانہ</span></label>
+<label class="option"><input type="radio" name="accuracy" value="قابلِ اعتماد" required><span>قابلِ اعتماد</span></label>
+<label class="option"><input type="radio" name="accuracy" value="مکمل قابلِ اعتماد" required><span>مکمل قابلِ اعتماد</span></label></div></div>
+<div class="field full"><label>8۔ ESS استعمال کرتے ہوئے آپ کو کتنی بار تکنیکی یا عملی مسئلہ پیش آتا ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="problemFrequency" value="روزانہ" required><span>روزانہ</span></label>
+<label class="option"><input type="radio" name="problemFrequency" value="اکثر" required><span>اکثر</span></label>
+<label class="option"><input type="radio" name="problemFrequency" value="کبھی کبھار" required><span>کبھی کبھار</span></label>
+<label class="option"><input type="radio" name="problemFrequency" value="شاذونادر" required><span>شاذونادر</span></label>
+<label class="option"><input type="radio" name="problemFrequency" value="کبھی نہیں" required><span>کبھی نہیں</span></label></div></div>
+<div class="field full"><label>9۔ ESS کے ذریعے Attendance سے متعلق مسئلہ یا غلطی کی اصلاح کروانا کتنا آسان ہے؟</label><div class="options"><label class="option"><input type="radio" name="correction" value="بہت آسان"><span>بہت آسان</span></label>
+<label class="option"><input type="radio" name="correction" value="آسان"><span>آسان</span></label>
+<label class="option"><input type="radio" name="correction" value="درمیانہ"><span>درمیانہ</span></label>
+<label class="option"><input type="radio" name="correction" value="مشکل"><span>مشکل</span></label>
+<label class="option"><input type="radio" name="correction" value="بہت مشکل"><span>بہت مشکل</span></label>
+<label class="option"><input type="radio" name="correction" value="ابھی تک ضرورت نہیں پڑی"><span>ضرورت نہیں پڑی</span></label></div></div>
+<div class="field full"><label>10۔ ESS استعمال کرنے کے لیے Internet یا موبائل کی دستیابی آپ کے لیے کتنی بڑی رکاوٹ ہے؟</label><div class="options"><label class="option"><input type="radio" name="connectivity" value="بہت بڑی رکاوٹ"><span>بہت بڑی رکاوٹ</span></label>
+<label class="option"><input type="radio" name="connectivity" value="کافی رکاوٹ"><span>کافی رکاوٹ</span></label>
+<label class="option"><input type="radio" name="connectivity" value="معمولی رکاوٹ"><span>معمولی رکاوٹ</span></label>
+<label class="option"><input type="radio" name="connectivity" value="کوئی رکاوٹ نہیں"><span>کوئی رکاوٹ نہیں</span></label></div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><span class="number">04</span><span>پرانے اور نئے نظام کا تقابلی جائزہ</span></div><div class="grid">
+<div class="field full"><label>11۔ مجموعی طور پر آپ کے نزدیک کون سا Attendance طریقۂ کار زیادہ بہتر ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="comparison" value="پرانا نظام بہتر تھا" required><span>پرانا نظام بہتر تھا</span></label>
+<label class="option"><input type="radio" name="comparison" value="دونوں تقریباً یکساں ہیں" required><span>دونوں تقریباً یکساں ہیں</span></label>
+<label class="option"><input type="radio" name="comparison" value="ESS بہتر ہے" required><span>ESS بہتر ہے</span></label>
+<label class="option"><input type="radio" name="comparison" value="صورتحال کے مطابق فرق ہے" required><span>صورتحال کے مطابق فرق ہے</span></label>
+<label class="option"><input type="radio" name="comparison" value="ابھی فیصلہ نہیں کر سکتا" required><span>ابھی فیصلہ نہیں کر سکتا</span></label></div></div>
+<div class="field full"><label>12۔ پرانے نظام کے مقابلے میں ESS سے آپ کے وقت میں کیا فرق پڑا ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="timeImpact" value="وقت زیادہ لگتا ہے" required><span>وقت زیادہ لگتا ہے</span></label>
+<label class="option"><input type="radio" name="timeImpact" value="کوئی خاص فرق نہیں" required><span>کوئی خاص فرق نہیں</span></label>
+<label class="option"><input type="radio" name="timeImpact" value="کچھ وقت بچتا ہے" required><span>کچھ وقت بچتا ہے</span></label>
+<label class="option"><input type="radio" name="timeImpact" value="کافی وقت بچتا ہے" required><span>کافی وقت بچتا ہے</span></label>
+<label class="option"><input type="radio" name="timeImpact" value="کہہ نہیں سکتا" required><span>کہہ نہیں سکتا</span></label></div></div>
+<div class="field full"><label>13۔ کیا ESS نے Attendance کے عمل میں شفافیت اور ملازم کی اپنی معلومات تک رسائی بہتر بنائی ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="transparency" value="بالکل نہیں" required><span>بالکل نہیں</span></label>
+<label class="option"><input type="radio" name="transparency" value="کچھ حد تک" required><span>کچھ حد تک</span></label>
+<label class="option"><input type="radio" name="transparency" value="کوئی فرق نہیں" required><span>کوئی فرق نہیں</span></label>
+<label class="option"><input type="radio" name="transparency" value="کافی بہتری" required><span>کافی بہتری</span></label>
+<label class="option"><input type="radio" name="transparency" value="بہت زیادہ بہتری" required><span>بہت زیادہ بہتری</span></label></div></div>
+<div class="field full"><label>14۔ آپ کے خیال میں ESS نے Attendance کے معاملے میں ملازمین کی سہولت میں مجموعی طور پر کیا تبدیلی پیدا کی ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="overallImpact" value="منفی اثر" required><span>منفی اثر</span></label>
+<label class="option"><input type="radio" name="overallImpact" value="کوئی خاص فرق نہیں" required><span>کوئی خاص فرق نہیں</span></label>
+<label class="option"><input type="radio" name="overallImpact" value="معمولی بہتری" required><span>معمولی بہتری</span></label>
+<label class="option"><input type="radio" name="overallImpact" value="واضح بہتری" required><span>واضح بہتری</span></label>
+<label class="option"><input type="radio" name="overallImpact" value="بہت نمایاں بہتری" required><span>بہت نمایاں بہتری</span></label></div></div>
+<div class="field full"><label>15۔ کیا ESS کا موجودہ نظام آپ کے کام کی نوعیت (خصوصاً فیلڈ ڈیوٹی) کے مطابق ہے؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="fieldFit" value="بالکل موزوں نہیں" required><span>بالکل موزوں نہیں</span></label>
+<label class="option"><input type="radio" name="fieldFit" value="کم موزوں" required><span>کم موزوں</span></label>
+<label class="option"><input type="radio" name="fieldFit" value="کسی حد تک موزوں" required><span>کسی حد تک موزوں</span></label>
+<label class="option"><input type="radio" name="fieldFit" value="موزوں" required><span>موزوں</span></label>
+<label class="option"><input type="radio" name="fieldFit" value="مکمل موزوں" required><span>مکمل موزوں</span></label>
+<label class="option"><input type="radio" name="fieldFit" value="میری ڈیوٹی فیلڈ سے متعلق نہیں" required><span>متعلق نہیں</span></label></div></div>
+<div class="field full"><label>16۔ مجموعی طور پر آپ ESS سے کتنے مطمئن ہیں؟ <span class="required">*</span></label><div class="rating"><label class="option"><input type="radio" name="satisfaction" value="بالکل مطمئن نہیں" required><span>بالکل مطمئن نہیں</span></label>
+<label class="option"><input type="radio" name="satisfaction" value="کم مطمئن" required><span>کم مطمئن</span></label>
+<label class="option"><input type="radio" name="satisfaction" value="درمیانہ" required><span>درمیانہ</span></label>
+<label class="option"><input type="radio" name="satisfaction" value="مطمئن" required><span>مطمئن</span></label>
+<label class="option"><input type="radio" name="satisfaction" value="مکمل مطمئن" required><span>مکمل مطمئن</span></label></div></div>
+</div></section>
+
+<section class="section"><div class="section-title"><span class="number">05</span><span>مسائل، بہتری اور تجاویز</span></div><div class="grid">
+<div class="field full"><label>17۔ ESS استعمال کرتے ہوئے آپ کو کن مسائل کا سامنا ہوتا ہے؟ (ایک سے زیادہ منتخب کر سکتے ہیں)</label><div class="options"><label class="option"><input type="checkbox" name="essIssues" value="Login / Password"><span>Login / Password</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="Internet / Network"><span>Internet / Network</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="Location / GPS"><span>Location / GPS</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="Attendance Mark / Sync"><span>Attendance Mark / Sync</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="غلط اندراج / وقت"><span>غلط اندراج / وقت</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="Application Slow"><span>Application Slow</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="Training / رہنمائی کی کمی"><span>Training / رہنمائی کی کمی</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="کوئی مسئلہ نہیں"><span>کوئی مسئلہ نہیں</span></label>
+<label class="option"><input type="checkbox" name="essIssues" value="دیگر"><span>دیگر</span></label></div></div>
+<div class="field full"><label>18۔ ESS کی کون سی سہولت یا خصوصیت آپ کے لیے سب سے زیادہ فائدہ مند ہے؟</label><textarea id="benefit" placeholder="اپنی رائے تحریر کریں..."></textarea></div>
+<div class="field full"><label>19۔ ESS کے کس پہلو میں بہتری کی سب سے زیادہ ضرورت ہے؟</label><textarea id="improvement" placeholder="مسئلہ یا بہتری کی ضرورت واضح کریں..."></textarea></div>
+<div class="field full"><label>20۔ اگر آپ ESS کے حق میں یا اس کے خلاف کوئی اہم بات کہنا چاہیں تو یہاں تحریر کریں۔</label><textarea id="comments" placeholder="اپنی آزادانہ رائے تحریر کریں..."></textarea></div>
+<div class="field full"><label>21۔ کیا آپ سمجھتے ہیں کہ موجودہ ESS نظام کو برقرار رکھتے ہوئے اس میں ضروری تبدیلیاں کی جانی چاہییں؟ <span class="required">*</span></label><div class="options"><label class="option"><input type="radio" name="future" value="جی ہاں، موجودہ نظام جاری رہے" required><span>جی ہاں، جاری رہے</span></label>
+<label class="option"><input type="radio" name="future" value="جی ہاں، ضروری تبدیلیوں کے ساتھ" required><span>تبدیلیوں کے ساتھ</span></label>
+<label class="option"><input type="radio" name="future" value="نہیں، متبادل طریقہ بہتر ہوگا" required><span>نہیں، متبادل بہتر ہوگا</span></label>
+<label class="option"><input type="radio" name="future" value="ابھی فیصلہ نہیں" required><span>ابھی فیصلہ نہیں</span></label></div></div>
+</div></section>
+<div class="submit-area"><button type="submit" id="submitButton">Feedback جمع کریں</button><div id="message" class="message"></div></div>
+</form></main>
+<footer class="footer"><strong>LESCO IT Directorate</strong><br>ESS – Employee Self Service Attendance Feedback</footer>
+</div>
+<script>
+const divisionMap = {"11110": "1111", "11111": "1111", "11112": "1111", "11113": "1111", "11114": "1111", "11115": "1111", "11116": "1111", "11123": "1112", "11124": "1112", "11128": "1112", "11129": "1112", "11130": "1113", "11131": "1113", "11132": "1113", "11133": "1113", "11134": "1113", "11135": "1113", "11140": "1114", "11141": "1114", "11142": "1114", "11143": "1114", "11144": "1114", "11145": "1114", "11150": "1115", "11151": "1115", "11152": "1115", "11153": "1115", "11154": "1115", "11155": "1115", "11160": "1116", "11161": "1116", "11162": "1116", "11163": "1116", "11164": "1116", "11165": "1116", "11166": "1116", "11218": "1121", "11219": "1121", "11220": "1122", "11221": "1122", "11222": "1122", "11223": "1122", "11224": "1122", "11225": "1122", "11230": "1123", "11231": "1123", "11237": "1123", "11238": "1123", "11240": "1124", "11241": "1124", "11242": "1124", "11243": "1124", "11244": "1124", "11245": "1124", "11250": "1125", "11251": "1125", "11252": "1125", "11253": "1125", "11254": "1125", "11263": "1126", "11264": "1126", "11270": "1127", "11271": "1127", "11273": "1127", "11274": "1127", "11310": "1131", "11311": "1131", "11312": "1131", "11313": "1131", "11314": "1131", "11315": "1131", "11316": "1131", "11330": "1133", "11331": "1133", "11332": "1133", "11333": "1133", "11334": "1133", "11335": "1133", "11340": "1134", "11341": "1134", "11342": "1134", "11343": "1134", "11344": "1134", "11345": "1134", "11346": "1134", "11347": "1134", "11350": "1135", "11351": "1135", "11352": "1135", "11353": "1135", "11354": "1135", "11411": "1141", "11412": "1141", "11413": "1141", "11414": "1141", "11416": "1141", "11417": "1141", "11418": "1141", "11420": "1142", "11421": "1142", "11422": "1142", "11423": "1142", "11424": "1142", "11430": "1143", "11431": "1143", "11432": "1143", "11433": "1143", "11434": "1143", "11450": "1145", "11451": "1145", "11452": "1145", "11453": "1145", "11454": "1145", "11455": "1145", "11456": "1145", "11461": "1146", "11462": "1146", "11463": "1146", "11464": "1146", "11465": "1146", "11466": "1146", "11510": "1151", "11511": "1151", "11512": "1151", "11513": "1151", "11514": "1151", "11515": "1151", "11516": "1151", "11520": "1152", "11521": "1152", "11522": "1152", "11523": "1152", "11526": "1152", "11527": "1152", "11530": "1153", "11531": "1153", "11532": "1153", "11533": "1153", "11534": "1153", "11535": "1153", "11536": "1153", "11537": "1153", "11540": "1154", "11541": "1154", "11542": "1154", "11543": "1154", "11544": "1154", "11545": "1154", "11550": "1155", "11551": "1155", "11552": "1155", "11553": "1155", "11554": "1155", "11560": "1156", "11561": "1156", "11562": "1156", "11563": "1156", "11564": "1156", "11570": "1157", "11571": "1157", "11573": "1157", "11574": "1157", "11575": "1157", "11576": "1157", "11610": "1161", "11611": "1161", "11612": "1161", "11613": "1161", "11614": "1161", "11630": "1163", "11631": "1163", "11632": "1163", "11633": "1163", "11634": "1163", "11635": "1163", "11640": "1164", "11641": "1164", "11642": "1164", "11643": "1164", "11644": "1164", "11645": "1164", "11710": "1171", "11711": "1171", "11712": "1171", "11713": "1171", "11714": "1171", "11722": "1172", "11723": "1172", "11724": "1172", "11725": "1172", "11726": "1172", "11727": "1172", "11730": "1173", "11731": "1173", "11732": "1173", "11733": "1173", "11734": "1173", "11738": "1173", "11739": "1173", "11740": "1174", "11741": "1174", "11742": "1174", "11743": "1174", "11744": "1174", "11745": "1174", "11746": "1174", "11747": "1174", "11750": "1175", "11751": "1175", "11752": "1175", "11753": "1175", "11754": "1175", "11810": "1181", "11811": "1181", "11812": "1181", "11813": "1181", "11814": "1181", "11820": "1182", "11821": "1182", "11822": "1182", "11823": "1182", "11824": "1182", "11830": "1183", "11831": "1183", "11832": "1183", "11833": "1183", "11834": "1183", "11840": "1184", "11841": "1184", "11842": "1184", "11843": "1184", "11844": "1184"};
+const subDivision = document.getElementById('subDivision');
+subDivision.addEventListener('change', function(){ document.getElementById('division').value = divisionMap[this.value] || ''; });
+function val(id){return document.getElementById(id)?.value || '';}
+function checked(name){return document.querySelector('input[name="'+name+'"]:checked')?.value || '';}
+function checks(name){return Array.from(document.querySelectorAll('input[name="'+name+'"]:checked')).map(x=>x.value);}
+function sendField(form,name,value){const i=document.createElement('input');i.type='hidden';i.name=name;i.value=Array.isArray(value)?value.join('|||'):(value??'');form.appendChild(i);}
+
+document.getElementById('feedbackForm').addEventListener('submit',function(ev){
+ ev.preventDefault();
+ if(!this.reportValidity()) return;
+ const btn=document.getElementById('submitButton');
+ btn.disabled=true;btn.textContent='Feedback جمع ہو رہا ہے...';
+ const msg=document.getElementById('message');
+ msg.className='message success';msg.textContent='براہِ کرم انتظار کریں...';
+
+ const data={
+ subDivision:val('subDivision'),division:val('division'),name:val('name'),designation:val('designation'),employeeId:val('employeeId'),mobile:val('mobile'),usagePeriod:val('usagePeriod'),workNature:val('workNature'),
+ oldMethod:checked('oldMethod'),oldDifficulty:checked('oldDifficulty'),oldRecordAccess:checked('oldRecordAccess'),oldIssues:checks('oldIssues'),
+ appEase:checked('appEase'),recordAccess:checked('recordAccess'),accuracy:checked('accuracy'),problemFrequency:checked('problemFrequency'),correction:checked('correction'),connectivity:checked('connectivity'),
+ comparison:checked('comparison'),timeImpact:checked('timeImpact'),transparency:checked('transparency'),overallImpact:checked('overallImpact'),fieldFit:checked('fieldFit'),satisfaction:checked('satisfaction'),
+ essIssues:checks('essIssues'),benefit:val('benefit'),improvement:val('improvement'),comments:val('comments'),future:checked('future')
+ };
+
+ if(typeof google==='undefined' || !google.script || !google.script.run){
+   show(false,'یہ صفحہ Google Apps Script کے Live URL سے کھولیں؛ مقامی HTML فائل سے Submission دستیاب نہیں۔');
+   return;
+ }
+ const timeout=setTimeout(()=>{
+   show(false,'سرور سے جواب موصول نہیں ہوا۔ دوبارہ جمع کرانے سے پہلے Google Sheet چیک کریں تاکہ ڈپلیکیٹ اندراج نہ ہو۔');
+ },45000);
+
+ google.script.run
+   .withSuccessHandler(function(result){
+     clearTimeout(timeout);
+     if(result && result.success){
+       show(true,'آپ کا Feedback کامیابی سے Google Form اور Google Sheet میں محفوظ ہو گیا ہے۔ شکریہ۔');
+       document.getElementById('feedbackForm').reset();
+       document.getElementById('division').value='';
+     } else {
+       show(false,'Feedback محفوظ نہیں ہو سکا: '+(result && result.message ? result.message : 'نامعلوم خرابی'));
+     }
+   })
+   .withFailureHandler(function(error){
+     clearTimeout(timeout);
+     show(false,'سرور کی خرابی: '+(error && error.message ? error.message : String(error)));
+   })
+   .submitESSFeedback(data);
+});
+function show(ok,t){const b=document.getElementById('submitButton');b.disabled=false;b.textContent='Feedback جمع کریں';const m=document.getElementById('message');m.className='message '+(ok?'success':'error');m.textContent=t;m.scrollIntoView({behavior:'smooth',block:'center'});}
+</script>
+</body></html>
